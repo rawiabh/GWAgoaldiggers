@@ -56,6 +56,16 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GWA.Data\GWA.Data.csproj">
+      <Project>{8812dbe8-3f1e-498d-a73a-af0e20ee56ac}</Project>
+      <Name>GWA.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GWA.Domaine\GWA.Domaine.csproj">
+      <Project>{40e3d9c6-6106-4d2f-90c5-128bf9c46864}</Project>
+      <Name>GWA.Domaine</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

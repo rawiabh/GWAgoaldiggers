@@ -10,5 +10,6 @@ namespace GWA.Data.Infrastructure
    public interface IDatabaseFactory : IDisposable
     {
         GWAContext DataContext { get; }
+       
     }
 }
