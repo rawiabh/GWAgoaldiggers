@@ -69,6 +69,10 @@
     <Compile Include="Migrations\201611021927375_persistingTabelsToBase.Designer.cs">
       <DependentUpon>201611021927375_persistingTabelsToBase.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611022039545_user-session1.cs" />
+    <Compile Include="Migrations\201611022039545_user-session1.Designer.cs">
+      <DependentUpon>201611022039545_user-session1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -89,6 +93,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611021927375_persistingTabelsToBase.resx">
       <DependentUpon>201611021927375_persistingTabelsToBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611022039545_user-session1.resx">
+      <DependentUpon>201611022039545_user-session1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
