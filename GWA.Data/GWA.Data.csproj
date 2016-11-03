@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Configurations\UserConfiguration.cs" />
     <Compile Include="Context\GWAContext.cs" />
     <Compile Include="Conventions\DatetimeConvention.cs" />
     <Compile Include="Conventions\KeyConvention.cs" />
@@ -62,6 +63,7 @@
     <Compile Include="Infrastructure\UnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Folder Include="Configurations\" />
     <Folder Include="Migrations\" />

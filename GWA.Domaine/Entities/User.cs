@@ -24,5 +24,9 @@ namespace GWA.Domaine.Entities
         [DataType(DataType.ImageUrl), Display(Name = "Image")]
         public string ImageUrl { get; set; }
 
+
+
+        public virtual Session Session { get; set; }
+
     }
 }
