@@ -60,19 +60,11 @@
     <Compile Include="Infrastructure\IUnitOfWork.cs" />
     <Compile Include="Infrastructure\RepositoryBase.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
-    <Compile Include="Migrations\201611021915147_m1.cs" />
-    <Compile Include="Migrations\201611021915147_m1.Designer.cs">
-      <DependentUpon>201611021915147_m1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201611021927375_persistingTabelsToBase.cs" />
-    <Compile Include="Migrations\201611021927375_persistingTabelsToBase.Designer.cs">
-      <DependentUpon>201611021927375_persistingTabelsToBase.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Configurations\" />
+    <Folder Include="Migrations\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -83,14 +75,6 @@
       <Project>{40e3d9c6-6106-4d2f-90c5-128bf9c46864}</Project>
       <Name>GWA.Domaine</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201611021915147_m1.resx">
-      <DependentUpon>201611021915147_m1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201611021927375_persistingTabelsToBase.resx">
-      <DependentUpon>201611021927375_persistingTabelsToBase.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
