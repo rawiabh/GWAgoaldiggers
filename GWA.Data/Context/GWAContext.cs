@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace GWA.Data.Context
 {
+    [DbConfigurationType(typeof(MySql.Data.Entity.MySqlEFConfiguration))]
    public class GWAContext :DbContext
     {
         public GWAContext()
