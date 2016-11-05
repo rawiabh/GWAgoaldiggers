@@ -71,9 +71,6 @@
     <Compile Include="Infrastructure\UnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Migrations\" />
-  </ItemGroup>
   <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
