@@ -1,4 +1,5 @@
 ﻿using Ds.Data.Conventions;
+using GWA.Data.Configurations;
 using GWA.Domaine.Entities;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace GWA.Data.Context
 {
+    [DbConfigurationType(typeof(MySql.Data.Entity.MySqlEFConfiguration))]
    public class GWAContext :DbContext
     {
         public GWAContext()
@@ -20,10 +22,12 @@ namespace GWA.Data.Context
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            
-            modelBuilder.Conventions.Add(new DatetimeConvention());
-            
-            modelBuilder.Conventions.Add(new KeyConvention());
+
+            modelBuilder.Configurations.Add(new UserConfiguration());
+
+            //modelBuilder.Conventions.Add(new DatetimeConvention());
+
+            //modelBuilder.Conventions.Add(new KeyConvention());
         }
 
         DbSet<User> users { get; set; }
