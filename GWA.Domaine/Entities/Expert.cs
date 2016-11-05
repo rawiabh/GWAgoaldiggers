@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GWA.Domaine.Entities
 {
-    public class Expert
+    public class Expert :User
     {
         public string Domain { get; set; }
     }

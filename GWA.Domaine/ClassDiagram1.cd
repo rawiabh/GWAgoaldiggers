@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="GWA.Domaine.Class1" Collapsed="true">
+    <Position X="3" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Class1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GWA.Domaine.Entities.Address" Collapsed="true">
+    <Position X="3" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAgAAAAAAIAAAAAAAAAIAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>Entities\Address.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GWA.Domaine.Entities.Auction" Collapsed="true">
+    <Position X="4.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAEgAEAAAAAAAAAAEAAABABIBAAAAEAABAA=</HashCode>
+      <FileName>Entities\Auction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GWA.Domaine.Entities.Bid" Collapsed="true">
+    <Position X="6.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAQA=</HashCode>
+      <FileName>Entities\Bid.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GWA.Domaine.Entities.Buyer" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Entities\Buyer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GWA.Domaine.Entities.Category" Collapsed="true">
+    <Position X="8.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAgAAAAAAAAAAQAAAAAAAAAAAAIAAAAAAA=</HashCode>
+      <FileName>Entities\Category.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GWA.Domaine.Entities.Command" Collapsed="true">
+    <Position X="4.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAEAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Entities\Command.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GWA.Domaine.Entities.Expert" Collapsed="true">
+    <Position X="6.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Expert.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GWA.Domaine.Entities.Manager" Collapsed="true">
+    <Position X="8.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Entities\Manager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GWA.Domaine.Entities.Notification" Collapsed="true">
+    <Position X="3" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAgAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Entities\Notification.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GWA.Domaine.Entities.Payment" Collapsed="true">
+    <Position X="4.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAEAAAAAAAAAAAAgAAAAAAEAAAAAAEAAAAA=</HashCode>
+      <FileName>Entities\Payment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GWA.Domaine.Entities.Product" Collapsed="true">
+    <Position X="6.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAQDAAAACQAAgAAAAAAAAAQAAAIAAAAAAAAAAAAAKAA=</HashCode>
+      <FileName>Entities\Product.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GWA.Domaine.Entities.Seller" Collapsed="true">
+    <Position X="8.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Seller.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GWA.Domaine.Entities.Session" Collapsed="true">
+    <Position X="3" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Session.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GWA.Domaine.Entities.ShoppingCart" Collapsed="true">
+    <Position X="4.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAIAAAAAAA=</HashCode>
+      <FileName>Entities\ShoppingCart.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GWA.Domaine.Entities.Subscription" Collapsed="true">
+    <Position X="6.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Subscription.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GWA.Domaine.Entities.Token" Collapsed="true">
+    <Position X="8.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Entities\Token.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GWA.Domaine.Entities.User" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACQEAAACAAAQAAAAAAQAYAAAAAAAACAQAAABAAIAg=</HashCode>
+      <FileName>Entities\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="GWA.Domaine.Entities.Style" Collapsed="true">
+    <Position X="3" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAQAAAAAAAEBAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>Entities\Auction.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

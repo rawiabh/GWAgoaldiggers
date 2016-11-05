@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GWA.Domaine.Entities
 {
-    public class Manager
+    public class Manager : User
     {
         public string Grade { get; set; }
     }

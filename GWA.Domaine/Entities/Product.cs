@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,14 @@ namespace GWA.Domaine.Entities
         public DateTime CreationDate { get; set; }
         public DateTime UpdateDate { get; set; }
         public string reference { get; set; }
-    public float CurrentPrice { get; set; }
-}
+        public float CurrentPrice { get; set; }
+
+        [ForeignKey("User")]
+        public int IdUser { get; set; }
+        public virtual User User { get; set; }
+
+        [ForeignKey("Category")]
+        public int IdCategory { get; set; }
+        public virtual Category Category { get; set; }
+    }
 }

@@ -27,6 +27,8 @@ namespace GWA.Domaine.Entities
 
 
         public virtual Session Session { get; set; }
+        public virtual ICollection<Product> UserProducts { get; set; }
+
 
     }
 }
