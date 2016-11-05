@@ -24,6 +24,7 @@ namespace GWA.Data.Context
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Configurations.Add(new UserConfiguration());
+            modelBuilder.Configurations.Add(new ProductConfiguration());
 
             //modelBuilder.Conventions.Add(new DatetimeConvention());
 

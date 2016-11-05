@@ -16,6 +16,7 @@ namespace GWA.Data.Configurations
             HasOptional(s => s.Session)
                .WithRequired(ad => ad.User);
 
+            
         }
     }
 }

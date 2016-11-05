@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Configurations\ProductConfiguration.cs" />
     <Compile Include="Configurations\UserConfiguration.cs" />
     <Compile Include="Context\GWAContext.cs" />
     <Compile Include="Conventions\DatetimeConvention.cs" />
@@ -69,13 +70,13 @@
     <Compile Include="Infrastructure\IUnitOfWork.cs" />
     <Compile Include="Infrastructure\RepositoryBase.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
-    <Compile Include="Migrations\201611051330463_relation.cs" />
-    <Compile Include="Migrations\201611051330463_relation.Designer.cs">
-      <DependentUpon>201611051330463_relation.cs</DependentUpon>
+    <Compile Include="Migrations\201611051428068_relationconf.cs" />
+    <Compile Include="Migrations\201611051428068_relationconf.Designer.cs">
+      <DependentUpon>201611051428068_relationconf.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201611051333255_relation55.cs" />
-    <Compile Include="Migrations\201611051333255_relation55.Designer.cs">
-      <DependentUpon>201611051333255_relation55.cs</DependentUpon>
+    <Compile Include="Migrations\201611051714169_databasemigration.cs" />
+    <Compile Include="Migrations\201611051714169_databasemigration.Designer.cs">
+      <DependentUpon>201611051714169_databasemigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -92,11 +93,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201611051330463_relation.resx">
-      <DependentUpon>201611051330463_relation.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201611051428068_relationconf.resx">
+      <DependentUpon>201611051428068_relationconf.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201611051333255_relation55.resx">
-      <DependentUpon>201611051333255_relation55.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201611051714169_databasemigration.resx">
+      <DependentUpon>201611051714169_databasemigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

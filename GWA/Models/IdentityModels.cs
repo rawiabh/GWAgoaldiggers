@@ -29,5 +29,7 @@ namespace GWA.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<GWA.Models.Product.ProductViewModel> ProductViewModels { get; set; }
     }
 }

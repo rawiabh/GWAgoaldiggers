@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -16,6 +17,10 @@ namespace GWA.Domaine.Entities
         public DateTime UpdateDate { get; set; }
         public string reference { get; set; }
         public float CurrentPrice { get; set; }
+        [DataType(DataType.ImageUrl), Display(Name = "Image")]
+        public string ImageUrl { get; set; }
+
+
 
         [ForeignKey("User")]
         public int IdUser { get; set; }

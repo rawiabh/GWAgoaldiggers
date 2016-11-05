@@ -57,7 +57,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Categories\CategoryService.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="Products\ProductService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -72,6 +74,10 @@
     <ProjectReference Include="..\GWA.Domaine\GWA.Domaine.csproj">
       <Project>{40e3d9c6-6106-4d2f-90c5-128bf9c46864}</Project>
       <Name>GWA.Domaine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GWA.Service.Pattern\GWA.Service.Pattern.csproj">
+      <Project>{6550F93E-0014-4669-B456-20E7C17FCF08}</Project>
+      <Name>GWA.Service.Pattern</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

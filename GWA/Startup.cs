@@ -1,5 +1,7 @@
 ﻿using Microsoft.Owin;
+using MySql.Data.Entity;
 using Owin;
+using System.Data.Entity;
 
 [assembly: OwinStartupAttribute(typeof(GWA.Startup))]
 namespace GWA
@@ -9,6 +11,7 @@ namespace GWA
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
+            DbConfiguration.SetConfiguration(new MySqlEFConfiguration());
         }
     }
 }
