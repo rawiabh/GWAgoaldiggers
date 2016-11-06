@@ -15,16 +15,26 @@
     <p>
         @Html.ActionLink("Create New", "Create")
     </p>
+
+    @using (Html.BeginForm())
+    {
+        <p>
+            Find by name or ref: @Html.TextBox("SearchString")
+            <input type="submit" value="Search" />
+        </p>
+    }
+
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                
+                @Html.ActionLink("Name ", "Index", new { sortOrder = ViewBag.NameSortParm })
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.status)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CreationDate)
+                @Html.ActionLink("Creation Date", "Index", new { sortOrder = ViewBag.DateSortParm })
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.UpdateDate)

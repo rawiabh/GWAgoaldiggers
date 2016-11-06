@@ -23,9 +23,38 @@ namespace GWA.Controllers.Products
             cs = new CategoryService();
         }
         // GET: Product
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string searchString)
         {
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";    
+                   
+
+
             var prod = ps.GetAll();
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                prod = prod.Where(s => s.Name.Contains(searchString)
+                                       || s.reference.Contains(searchString));
+            }
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    prod = prod.OrderByDescending(s => s.Name);
+                    break;
+                case "Date":
+                    prod = prod.OrderBy(s => s.CreationDate);
+                    break;
+                case "date_desc":
+                    prod = prod.OrderByDescending(s => s.CreationDate);
+                    break;
+                default:
+                    prod = prod.OrderBy(s => s.Name);
+                    break;
+            }
+
+
             List<ProductViewModel> pvm = new List<ProductViewModel>();
             foreach (var item in prod)
             {
@@ -34,16 +63,18 @@ namespace GWA.Controllers.Products
                     {
                         Id = item.Id,
                         Name = item.Name,
-                        CreationDate= item.CreationDate,
+                        CreationDate = item.CreationDate,
                         CategoryId = item.IdCategory,
                         CurrentPrice = item.CurrentPrice,
                         reference = item.reference,
                         status = item.status,
                         UpdateDate = new DateTime(),
-                        ImageUrl = item.ImageUrl
+                        ImageUrl = item.ImageUrl,
+                        IdUser = item.IdUser
                     });
             }
             return View(pvm);
+            
         }
 
         // GET: Product/Details/5
@@ -89,11 +120,12 @@ namespace GWA.Controllers.Products
                 IdCategory = pvm.CategoryId,
                 CreationDate = new DateTime(),
                 CurrentPrice = pvm.CurrentPrice,
-                IdUser = 1,
+                IdUser = pvm.IdUser,
                 Name = pvm.Name,
                 reference= pvm.reference,
                 status = pvm.status,
-                UpdateDate = new DateTime()
+                UpdateDate = new DateTime(),
+                ImageUrl = pvm.ImageUrl
                 
                 
             };
