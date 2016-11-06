@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using GWA.Helpers;
 using System.IO;
+using System.Net;
 
 namespace GWA.Controllers.Products
 {
@@ -108,10 +109,14 @@ namespace GWA.Controllers.Products
         }
 
         // GET: Product/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int? id)
         {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
             Product p = new Product();
-            p = ps.GetById(id);
+            p = ps.GetById((long)id);
 
             ProductViewModel pvm = new ProductViewModel
             {
@@ -158,25 +163,41 @@ namespace GWA.Controllers.Products
         }
 
         // GET: Product/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Product p = ps.GetById((long)id);
+            if (p == null)
+            {
+                return HttpNotFound();
+            }
+            ProductViewModel pvm = new ProductViewModel
+            {
+                CategoryId = p.IdCategory,
+                CreationDate = p.CreationDate,
+                CurrentPrice = p.CurrentPrice,
+                IdUser = 1,
+                Name = p.Name,
+                reference = p.reference,
+                status = p.status,
+                UpdateDate = new DateTime(),
+                ImageUrl = p.ImageUrl
+
+            };
+            return View(pvm);
         }
 
         // POST: Product/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id)
         {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            Product p = ps.GetById((long)id);
+            ps.Delete(p);
+            ps.Commit();
+            return RedirectToAction("Index");
         }
     }
 }
