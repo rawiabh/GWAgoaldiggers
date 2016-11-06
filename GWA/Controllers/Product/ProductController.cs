@@ -33,7 +33,13 @@ namespace GWA.Controllers.Products
                     {
                         Id = item.Id,
                         Name = item.Name,
-                        CreationDate= item.CreationDate
+                        CreationDate= item.CreationDate,
+                        CategoryId = item.IdCategory,
+                        CurrentPrice = item.CurrentPrice,
+                        reference = item.reference,
+                        status = item.status,
+                        UpdateDate = new DateTime(),
+                        ImageUrl = item.ImageUrl
                     });
             }
             return View(pvm);
@@ -42,7 +48,23 @@ namespace GWA.Controllers.Products
         // GET: Product/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            Product p = new Product();
+            p = ps.GetById(id);
+
+            ProductViewModel pvm = new ProductViewModel
+            {
+                CategoryId = p.IdCategory,
+                CreationDate = p.CreationDate,
+                CurrentPrice = p.CurrentPrice,
+                IdUser = 1,
+                Name = p.Name,
+                reference = p.reference,
+                status = p.status,
+                UpdateDate = new DateTime(),
+                ImageUrl = p.ImageUrl
+
+            };
+            return View(pvm);
         }
 
         // GET: Product/Create
@@ -88,23 +110,51 @@ namespace GWA.Controllers.Products
         // GET: Product/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            Product p = new Product();
+            p = ps.GetById(id);
+
+            ProductViewModel pvm = new ProductViewModel
+            {
+                CategoryId = p.IdCategory,
+                CreationDate = p.CreationDate,
+                CurrentPrice = p.CurrentPrice,
+                IdUser = 1,
+                Name = p.Name,
+                reference = p.reference,
+                status = p.status,
+                UpdateDate = new DateTime(), 
+                ImageUrl = p.ImageUrl
+
+            };
+            List<Category> Categories = cs.GetAll().ToList();
+            pvm.Category = Categories.ToSelectListItems();
+            return View(pvm);
         }
 
         // POST: Product/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, ProductViewModel pvm , HttpPostedFileBase Image)
         {
-            try
-            {
-                // TODO: Add update logic here
+            Product p = new Product();
+            p = ps.GetById(id);
+            p.ImageUrl = Image.FileName;
+            p.IdCategory = pvm.CategoryId;
+            p.CreationDate = pvm.CreationDate;
+            p.CurrentPrice = pvm.CurrentPrice;
+            p.Name = pvm.Name;
+            p.reference = pvm.reference;
+            p.status = pvm.status;
+            p.UpdateDate = pvm.UpdateDate;
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            
+
+
+            ps.Update(p);
+            ps.Commit();
+            var path = Path.Combine(Server.MapPath("~/Content/Upload/"), Image.FileName);
+            Image.SaveAs(path);
+            return RedirectToAction("Index");
+
         }
 
         // GET: Product/Delete/5

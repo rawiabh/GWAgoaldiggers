@@ -258,6 +258,8 @@
     <Content Include="Content\portfolio_three_columns.html" />
     <Content Include="Content\portfolio_two_columns.html" />
     <Content Include="Content\product_page_sidebar.html" />
+    <Content Include="Content\Upload\1febfda9932abc8267c56885e2222335.jpg" />
+    <Content Include="Content\Upload\Capture.PNG" />
     <Content Include="Content\wishlist.html" />
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\camera.css" />
@@ -629,10 +631,11 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Product\Create.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Product\Edit.cshtml" />
+    <Content Include="Views\Product\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\Upload\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
