@@ -1,5 +1,7 @@
-﻿@model IEnumerable<GWA.Models.Product.ProductViewModel>
-
+﻿@*@model IEnumerable<GWA.Models.Product.ProductViewModel>*@
+@model PagedList.IPagedList<GWA.Models.Product.ProductViewModel>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 @{
     Layout = null;
 }
@@ -16,10 +18,10 @@
         @Html.ActionLink("Create New", "Create")
     </p>
 
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("Index", "Product", FormMethod.Get))
     {
         <p>
-            Find by name or ref: @Html.TextBox("SearchString")
+            Find by name or ref: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
             <input type="submit" value="Search" />
         </p>
     }
@@ -28,31 +30,31 @@
         <tr>
             <th>
                 
-                @Html.ActionLink("Name ", "Index", new { sortOrder = ViewBag.NameSortParm })
+                @Html.ActionLink("Name ", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.status)
+                status
             </th>
             <th>
-                @Html.ActionLink("Creation Date", "Index", new { sortOrder = ViewBag.DateSortParm })
+                @Html.ActionLink("Creation Date", "Index", new { sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter })
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.UpdateDate)
+                UpdateDate
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.reference)
+                reference
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CurrentPrice)
+                CurrentPrice
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ImageUrl)
+                ImageUrl
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdUser)
+                IdUser
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CategoryId)
+                CategoryId
             </th>
             <th></th>
         </tr>
@@ -95,5 +97,12 @@
     }
     
     </table>
+
+    <br />
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+
 </body>
 </html>

@@ -10,6 +10,7 @@ using System.Web.Mvc;
 using GWA.Helpers;
 using System.IO;
 using System.Net;
+using PagedList;
 
 namespace GWA.Controllers.Products
 {
@@ -23,12 +24,25 @@ namespace GWA.Controllers.Products
             cs = new CategoryService();
         }
         // GET: Product
-        public ActionResult Index(string sortOrder, string searchString)
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";    
-                   
 
+            ViewBag.CurrentSort = sortOrder;
+
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
 
             var prod = ps.GetAll();
 
@@ -73,7 +87,10 @@ namespace GWA.Controllers.Products
                         IdUser = item.IdUser
                     });
             }
-            return View(pvm);
+
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            return View(pvm.ToPagedList(pageNumber, pageSize));
             
         }
 
