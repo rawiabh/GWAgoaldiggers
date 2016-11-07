@@ -31,5 +31,6 @@ namespace GWA.Models
         }
 
         public System.Data.Entity.DbSet<GWA.Models.Product.ProductViewModel> ProductViewModels { get; set; }
+        public System.Data.Entity.DbSet<GWA.Models.Category.CategoryViewModel> CategoryViewModels { get; set; }
     }
 }

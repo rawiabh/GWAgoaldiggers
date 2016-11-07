@@ -12,6 +12,7 @@ using System.IO;
 using System.Net;
 using PagedList;
 
+
 namespace GWA.Controllers.Products
 {
     public class ProductController : Controller
@@ -120,7 +121,7 @@ namespace GWA.Controllers.Products
         public ActionResult Create()
         {
             var pvm = new ProductViewModel();
-            List<Category> Categories = cs.GetAll().ToList() ;
+            List<GWA.Domaine.Entities.Category> Categories = cs.GetAll().ToList() ;
             pvm.Category = Categories.ToSelectListItems();
 
             return View(pvm);
@@ -180,7 +181,7 @@ namespace GWA.Controllers.Products
                 ImageUrl = p.ImageUrl
 
             };
-            List<Category> Categories = cs.GetAll().ToList();
+            List<GWA.Domaine.Entities.Category> Categories = cs.GetAll().ToList();
             pvm.Category = Categories.ToSelectListItems();
             return View(pvm);
         }
