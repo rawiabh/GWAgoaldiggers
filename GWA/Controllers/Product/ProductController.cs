@@ -10,7 +10,7 @@ using System.Web.Mvc;
 using GWA.Helpers;
 using System.IO;
 using System.Net;
-using PagedList;
+//using PagedList;
 
 
 namespace GWA.Controllers.Products
@@ -85,14 +85,14 @@ namespace GWA.Controllers.Products
                         status = item.status,
                         UpdateDate = new DateTime(),
                         ImageUrl = item.ImageUrl,
-                        IdUser = item.IdUser
+                       // IdUser = item.IdUser
                     });
             }
 
             int pageSize = 3;
             int pageNumber = (page ?? 1);
-            return View(pvm.ToPagedList(pageNumber, pageSize));
-            
+            // return View(pvm.ToPagedList(pageNumber, pageSize));
+            return View();
         }
 
         // GET: Product/Details/5
@@ -138,11 +138,11 @@ namespace GWA.Controllers.Products
                 IdCategory = pvm.CategoryId,
                 CreationDate = new DateTime(),
                 CurrentPrice = pvm.CurrentPrice,
-<<<<<<< HEAD
+
                 //IdUser = 1,
-=======
-                IdUser = pvm.IdUser,
->>>>>>> refs/remotes/origin/nour
+
+              //  IdUser = pvm.IdUser,
+
                 Name = pvm.Name,
                 reference= pvm.reference,
                 status = pvm.status,
