@@ -66,7 +66,7 @@ namespace GWA.Controllers.Products
                 IdCategory = pvm.CategoryId,
                 CreationDate = new DateTime(),
                 CurrentPrice = pvm.CurrentPrice,
-                IdUser = 1,
+                //IdUser = 1,
                 Name = pvm.Name,
                 reference= pvm.reference,
                 status = pvm.status,

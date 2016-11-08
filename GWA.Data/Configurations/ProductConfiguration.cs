@@ -13,10 +13,10 @@ namespace GWA.Data.Configurations
         public ProductConfiguration()
         {
             //one to many
-            HasRequired(p => p.User)
-               .WithMany(u => u.UserProducts)
-               .HasForeignKey(p => p.IdUser)
-               .WillCascadeOnDelete(false);
+            //HasRequired(p => p.User)
+            //   .WithMany(u => u.UserProducts)
+            //   .HasForeignKey(p => p.IdUser)
+            //   .WillCascadeOnDelete(false);
 
             //one to many
             HasRequired(p => p.Category)
