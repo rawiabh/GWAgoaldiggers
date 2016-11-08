@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GWA.Service.Pattern", "GWA.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GWA.API", "GWA.API\GWA.API.csproj", "{0186D82D-AFF3-4CAF-91A7-537D1EE2A062}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GWA.WEB1", "GWA.WEB1\GWA.WEB1.csproj", "{4FCB4643-4EE2-41CD-A854-88F85739608B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{0186D82D-AFF3-4CAF-91A7-537D1EE2A062}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0186D82D-AFF3-4CAF-91A7-537D1EE2A062}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0186D82D-AFF3-4CAF-91A7-537D1EE2A062}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FCB4643-4EE2-41CD-A854-88F85739608B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FCB4643-4EE2-41CD-A854-88F85739608B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FCB4643-4EE2-41CD-A854-88F85739608B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FCB4643-4EE2-41CD-A854-88F85739608B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
