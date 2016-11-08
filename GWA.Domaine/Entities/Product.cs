@@ -17,7 +17,8 @@ namespace GWA.Domaine.Entities
         public DateTime UpdateDate { get; set; }
         public string reference { get; set; }
         public float CurrentPrice { get; set; }
-        [DataType(DataType.ImageUrl), Display(Name = "Image")]
+
+        
         public string ImageUrl { get; set; }
 
 

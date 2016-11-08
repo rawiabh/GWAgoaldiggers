@@ -9,6 +9,9 @@ using System.Web;
 using System.Web.Mvc;
 using GWA.Helpers;
 using System.IO;
+using System.Net;
+using PagedList;
+
 
 namespace GWA.Controllers.Products
 {
@@ -22,9 +25,51 @@ namespace GWA.Controllers.Products
             cs = new CategoryService();
         }
         // GET: Product
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
+
+            ViewBag.CurrentSort = sortOrder;
+
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
             var prod = ps.GetAll();
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                prod = prod.Where(s => s.Name.Contains(searchString)
+                                       || s.reference.Contains(searchString));
+            }
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    prod = prod.OrderByDescending(s => s.Name);
+                    break;
+                case "Date":
+                    prod = prod.OrderBy(s => s.CreationDate);
+                    break;
+                case "date_desc":
+                    prod = prod.OrderByDescending(s => s.CreationDate);
+                    break;
+                default:
+                    prod = prod.OrderBy(s => s.Name);
+                    break;
+            }
+
+
             List<ProductViewModel> pvm = new List<ProductViewModel>();
             foreach (var item in prod)
             {
@@ -33,23 +78,50 @@ namespace GWA.Controllers.Products
                     {
                         Id = item.Id,
                         Name = item.Name,
-                        CreationDate= item.CreationDate
+                        CreationDate = item.CreationDate,
+                        CategoryId = item.IdCategory,
+                        CurrentPrice = item.CurrentPrice,
+                        reference = item.reference,
+                        status = item.status,
+                        UpdateDate = new DateTime(),
+                        ImageUrl = item.ImageUrl,
+                        IdUser = item.IdUser
                     });
             }
-            return View(pvm);
+
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            return View(pvm.ToPagedList(pageNumber, pageSize));
+            
         }
 
         // GET: Product/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            Product p = new Product();
+            p = ps.GetById(id);
+
+            ProductViewModel pvm = new ProductViewModel
+            {
+                CategoryId = p.IdCategory,
+                CreationDate = p.CreationDate,
+                CurrentPrice = p.CurrentPrice,
+                IdUser = 1,
+                Name = p.Name,
+                reference = p.reference,
+                status = p.status,
+                UpdateDate = new DateTime(),
+                ImageUrl = p.ImageUrl
+
+            };
+            return View(pvm);
         }
 
         // GET: Product/Create
         public ActionResult Create()
         {
             var pvm = new ProductViewModel();
-            List<Category> Categories = cs.GetAll().ToList() ;
+            List<GWA.Domaine.Entities.Category> Categories = cs.GetAll().ToList() ;
             pvm.Category = Categories.ToSelectListItems();
 
             return View(pvm);
@@ -66,11 +138,16 @@ namespace GWA.Controllers.Products
                 IdCategory = pvm.CategoryId,
                 CreationDate = new DateTime(),
                 CurrentPrice = pvm.CurrentPrice,
+<<<<<<< HEAD
                 //IdUser = 1,
+=======
+                IdUser = pvm.IdUser,
+>>>>>>> refs/remotes/origin/nour
                 Name = pvm.Name,
                 reference= pvm.reference,
                 status = pvm.status,
-                UpdateDate = new DateTime()
+                UpdateDate = new DateTime(),
+                ImageUrl = pvm.ImageUrl
                 
                 
             };
@@ -86,47 +163,95 @@ namespace GWA.Controllers.Products
         }
 
         // GET: Product/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Product p = new Product();
+            p = ps.GetById((long)id);
+
+            ProductViewModel pvm = new ProductViewModel
+            {
+                CategoryId = p.IdCategory,
+                CreationDate = p.CreationDate,
+                CurrentPrice = p.CurrentPrice,
+                IdUser = 1,
+                Name = p.Name,
+                reference = p.reference,
+                status = p.status,
+                UpdateDate = new DateTime(), 
+                ImageUrl = p.ImageUrl
+
+            };
+            List<GWA.Domaine.Entities.Category> Categories = cs.GetAll().ToList();
+            pvm.Category = Categories.ToSelectListItems();
+            return View(pvm);
         }
 
         // POST: Product/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, ProductViewModel pvm , HttpPostedFileBase Image)
         {
-            try
-            {
-                // TODO: Add update logic here
+            Product p = new Product();
+            p = ps.GetById(id);
+            p.ImageUrl = Image.FileName;
+            p.IdCategory = pvm.CategoryId;
+            p.CreationDate = pvm.CreationDate;
+            p.CurrentPrice = pvm.CurrentPrice;
+            p.Name = pvm.Name;
+            p.reference = pvm.reference;
+            p.status = pvm.status;
+            p.UpdateDate = pvm.UpdateDate;
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            
+
+
+            ps.Update(p);
+            ps.Commit();
+            var path = Path.Combine(Server.MapPath("~/Content/Upload/"), Image.FileName);
+            Image.SaveAs(path);
+            return RedirectToAction("Index");
+
         }
 
         // GET: Product/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Product p = ps.GetById((long)id);
+            if (p == null)
+            {
+                return HttpNotFound();
+            }
+            ProductViewModel pvm = new ProductViewModel
+            {
+                CategoryId = p.IdCategory,
+                CreationDate = p.CreationDate,
+                CurrentPrice = p.CurrentPrice,
+                IdUser = 1,
+                Name = p.Name,
+                reference = p.reference,
+                status = p.status,
+                UpdateDate = new DateTime(),
+                ImageUrl = p.ImageUrl
+
+            };
+            return View(pvm);
         }
 
         // POST: Product/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id)
         {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            Product p = ps.GetById((long)id);
+            ps.Delete(p);
+            ps.Commit();
+            return RedirectToAction("Index");
         }
     }
 }

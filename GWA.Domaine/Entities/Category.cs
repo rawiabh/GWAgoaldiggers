@@ -11,6 +11,7 @@ namespace GWA.Domaine.Entities
         public int Id { get; set; }
         public String Name { get; set; }
         public String Description { get; set; }
+        public string ImageUrl { get; set; }
 
         public virtual ICollection<Product> CategoryProducts { get; set; }
     }
