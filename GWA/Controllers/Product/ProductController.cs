@@ -138,7 +138,11 @@ namespace GWA.Controllers.Products
                 IdCategory = pvm.CategoryId,
                 CreationDate = new DateTime(),
                 CurrentPrice = pvm.CurrentPrice,
+<<<<<<< HEAD
+                //IdUser = 1,
+=======
                 IdUser = pvm.IdUser,
+>>>>>>> refs/remotes/origin/nour
                 Name = pvm.Name,
                 reference= pvm.reference,
                 status = pvm.status,
