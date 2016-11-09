@@ -23,6 +23,8 @@
     <!--font include-->
     <link href="@Url.Content("~/css/font-awesome.min.css")" rel="stylesheet">
     <script src="@Url.Content("~/Content/js/modernizr.js")"></script>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
     <!--boxed layout-->
@@ -39,10 +41,37 @@
                     <div class="row clearfix">
                         <div class="col-lg-4 col-md-4 col-sm-5 t_xs_align_c">
                             <ul class="d_inline_b horizontal_list clearfix f_size_small users_nav">
-                                <li><a href="#" class="default_t_color" data-popup="#login_popup">Log in</a></li>
-                                <li><a href="#" class="default_t_color">My Account</a></li>
-                                <li><a href="orders_list.html" class="default_t_color">List Orders</a></li>
-                                <li><a href="checkout.html" class="default_t_color">Checkout</a></li>
+                              
+@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+      
+            
+                @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+           
+            <a href="javascript:document.getElementById('logoutForm').submit()" class="default_t_color"  style="padding-left: 1em">Checkout</a>
+            <a href="#" class="default_t_color" style="padding-left: 1em">My Account</a>
+    }
+}
+else
+{
+
+
+        <li class="default_t_color">@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li><a href="/Account/Login/loginLink" class="default_t_color" data-popup="#login_popup" style="padding-left: 1.8em" id="loginLink">Log in</a></li>
+        @*<li><a href="#" class="default_t_color">My Account</a></li>*@
+        <li><a href="orders_list.html" class="default_t_color" style="padding-left: 1.8em">List Orders</a></li>
+        @*<li><a href="checkout.html" class="default_t_color">Checkout</a></li>*@
+
+}
+                                @*@Html.Partial("_LoginPartial")*@
+                               
+                                 @*<li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>*@
+
                             </ul>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-2 t_align_c t_xs_align_c">
@@ -51,7 +80,7 @@
                         <div class="col-lg-4 col-md-4 col-sm-5 t_align_r t_xs_align_c">
                             <ul class="horizontal_list clearfix d_inline_b t_align_l f_size_small site_settings type_2">
                                 <li class="container3d relative">
-                                    <a role="button" href="#" class="color_dark" id="lang_button"><img class="d_inline_middle m_right_10" src="@Url.Content("Content/images/flag_en.jpg")" alt="">English</a>
+                                    <a role="button" href="#" class="color_dark" id="lang_button"><img class="d_inline_middle m_right_10" src="@Url.Content("/Content/images/flag_en.jpg")" alt="">English</a>
                                     <ul class="dropdown_list type_2 top_arrow color_light">
                                         <li><a href="#" class="tr_delay_hover color_light"><img class="d_inline_middle" src="@Url.Content("/Content/images/flag_en.jpg")" alt="">English</a></li>
                                         <li><a href="#" class="tr_delay_hover color_light"><img class="d_inline_middle" src="@Url.Content("/Content/images/flag_fr.jpg")" alt="">French</a></li>
@@ -80,7 +109,7 @@
                         <div class="clearfix row">
                             <div class="col-lg-2 t_md_align_c m_md_bottom_15">
                                 <a href="@Url.Content("~/Content/index-2.html")" class="logo d_md_inline_b">
-                                    <img src="Content/images/logo.png" alt="">
+                                    <img src="@Url.Content("/Content/images/logo.png")" alt="">
                                 </a>
                             </div>
                             <div class="col-lg-10 clearfix t_sm_align_c">
@@ -675,41 +704,295 @@
                 </div>
             </div>
         </section>
+      
+
     </div>
     <!--login popup-->
+
+
+
+
+
     <div class="popup_wrap d_none" id="login_popup">
-        <section class="popup r_corners shadow">
-            <button class="bg_tr color_dark tr_all_hover text_cs_hover close f_size_large"><i class="fa fa-times"></i></button>
-            <h3 class="m_bottom_20 color_dark">Log In</h3>
-            <form>
-                <ul>
-                    <li class="m_bottom_15">
-                        <label for="username" class="m_bottom_5 d_inline_b">Username</label><br>
-                        <input type="text" name="" id="username" class="r_corners full_width">
-                    </li>
-                    <li class="m_bottom_25">
-                        <label for="password" class="m_bottom_5 d_inline_b">Password</label><br>
-                        <input type="password" name="" id="password" class="r_corners full_width">
-                    </li>
-                    <li class="m_bottom_15">
-                        <input type="checkbox" class="d_none" id="checkbox_10"><label for="checkbox_10">Remember me</label>
-                    </li>
-                    <li class="clearfix m_bottom_30">
-                        <button class="button_type_4 tr_all_hover r_corners f_left bg_scheme_color color_light f_mxs_none m_mxs_bottom_15">Log In</button>
-                        <div class="f_right f_size_medium f_mxs_none">
-                            <a href="#" class="color_dark">Forgot your password?</a><br>
-                            <a href="#" class="color_dark">Forgot your username?</a>
+
+        @model IdentitySample.Models.LoginViewModel
+
+
+        @*<div class="row">
+            <div class="col-md-8">
+                <section id="loginForm">
+                    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <h4>Use a local account to log in.</h4>
+                        <hr />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                            </div>
                         </div>
-                    </li>
-                </ul>
-            </form>
-            <footer class="bg_light_color_1 t_mxs_align_c">
-                <h3 class="color_dark d_inline_middle d_mxs_block m_mxs_bottom_15">New Customer?</h3>
-                <a href="#" role="button" class="tr_all_hover r_corners button_type_4 bg_dark_color bg_cs_hover color_light d_inline_middle m_mxs_left_0">Create an Account</a>
-            </footer>
+
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                            <div class="col-md-10">
+                                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <div class="checkbox">
+                                    @Html.CheckBoxFor(m => m.RememberMe)
+                                    @Html.LabelFor(m => m.RememberMe)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Log in" class="btn btn-default" />
+                            </div>
+                        </div>
+                        <p>
+                            @Html.ActionLink("Register a new user?", "Register")
+                        </p>
+                        <p>
+                            @Html.ActionLink("Forget your password?", "ForgotPassword")
+                        </p>
+                        @* Enable this once you have account confirmation enabled for password reset functionality *@
+                        @*<p>
+                            @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                        </p>*@
+                    @*}
+                </section>
+            </div>
+            <div class="col-md-4">
+                <section id="socialLoginForm"></section>
+            </div>*@
+        @*</div>*@
+
+
+
+        <section class="popup r_corners shadow" id="loginForm">
+
+
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+
+            {
+                @Html.AntiForgeryToken()
+                @*<h4>Use a local account to log in.</h4>
+                    <hr />*@
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <button class="bg_tr color_dark tr_all_hover text_cs_hover close f_size_large"><i class="fa fa-times"></i></button>
+                <h3 class="m_bottom_20 color_dark">Log In</h3>
+                <form>
+                    <ul>
+
+
+
+
+
+
+                        <li class="m_bottom_15">
+                            <label for="username" class="m_bottom_5 d_inline_b">@Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label,m_bottom_5 d_inline_b" }) </label><br>
+                            @*<input type="text" name="" id="username" class="r_corners full_width">*@
+
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control,r_corners full_width", @id = "username" })
+                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+
+
+                        </li>
+
+
+
+                        <li class="m_bottom_25">
+
+
+
+                            <label for="password" class="m_bottom_5 d_inline_b">@Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label,m_bottom_5 d_inline_b" })</label><br>
+                            @*<input type="password" name="" id="password" class="r_corners full_width">*@
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control,r_corners full_width", @id = "password" })
+                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                        </li>
+                        @Styles.Render("~/Content/css")
+
+
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(m => m.RememberMe)
+                            @Html.LabelFor(m => m.RememberMe)
+                        </div>
+
+
+                        @*<li class="m_bottom_15">*@
+
+
+
+                        @*<input type="checkbox" class="d_none" id="checkbox_10">*@
+                        @*@Html.CheckBoxFor(m => m.RememberMe, new { @class = "checkbox" })
+                            <label for="checkbox_10" >*@
+
+                        @*@Html.LabelFor(m => m.RememberMe, new { @class = "checkbox_10" })*@
+                        @*</label>*@
+                        @*</li>*@
+
+
+                        <li class="clearfix m_bottom_30">
+                            @*<div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Log in" class="btn btn-default" />
+                                </div>
+                            </div>*@
+                            <button type="submit" value="Log in" class="button_type_4 tr_all_hover r_corners f_left bg_scheme_color color_light f_mxs_none m_mxs_bottom_15">Log In</button>
+                            <div class="f_right f_size_medium f_mxs_none">
+
+                                <p class="color_dark">
+                                    @Html.ActionLink("Forget your password?", "ForgotPassword", new { @class = "color_dark" })
+                                </p>
+                                @* Enable this once you have account confirmation enabled for password reset functionality *@
+                                <p class="color_dark">
+                                    @Html.ActionLink("Forgot your password?", "ForgotPassword", new { @class = "color_dark" })
+                                </p>
+
+                                @*<a href="#" class="color_dark">Forgot your password?</a><br>
+                                    <a href="#" class="color_dark">Forgot your username?</a>*@
+                            </div>
+                        </li>
+
+
+
+                    </ul>
+                </form>
+                            <footer class="bg_light_color_1 t_mxs_align_c">
+
+                                <section id="socialLoginForm">
+                                    @Html.Partial("~/Views/Account/_ExternalLoginsListPartial.cshtml", new IdentitySample.Models.ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+                                </section>
+
+
+
+
+
+                            </footer>
+
+
+                            <footer class="bg_light_color_1 t_mxs_align_c">
+                                <h3 class="color_dark d_inline_middle d_mxs_block m_mxs_bottom_15">New Customer?</h3>
+                                <section class="tr_all_hover r_corners button_type_4 bg_dark_color bg_cs_hover color_light d_inline_middle m_mxs_left_0">
+                                    @Html.ActionLink("Create an Account", "Register", new { @style = "color:#FFFFFF;" })
+                                </section>
+
+                            </footer>
+
+                                @*@Html.AntiForgeryToken()
+                                    <h4>Use a local account to log in.</h4>
+                                            <hr />
+                                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
+
+
+                                @*<div class="form-group">
+                                        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                                        <div class="col-md-10">
+                                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>*@
+
+
+                                @*<div class="form-group">
+                                        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                                        <div class="col-md-10">
+                                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>*@
+
+                                @*<div class="form-group">
+                                        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                                        <div class="col-md-10">
+                                            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>*@
+
+
+                                @*<div class="form-group">
+                                        <div class="col-md-offset-2 col-md-10">
+                                            <div class="checkbox">
+                                                @Html.CheckBoxFor(m => m.RememberMe)
+                                                @Html.LabelFor(m => m.RememberMe)
+                                            </div>
+                                        </div>
+                                    </div>*@
+
+
+
+                                @*<div class="form-group">
+                                        <div class="col-md-offset-2 col-md-10">
+                                            <input type="submit" value="Log in" class="btn btn-default" />
+                                        </div>
+                                    </div>*@
+                                @*<p>
+                                        @Html.ActionLink("Register a new user?", "Register")
+                                    </p>
+                                    <p>
+                                        @Html.ActionLink("Forget your password?", "ForgotPassword")
+                                    </p>
+                                    @* Enable this once you have account confirmation enabled for password reset functionality *@
+                                @*<p>
+                                        @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                                    </p>*@
+            }
+
+
         </section>
+
+        @*<button class="bg_tr color_dark tr_all_hover text_cs_hover close f_size_large"><i class="fa fa-times"></i></button>
+                                        <h3 class="m_bottom_20 color_dark">Log In</h3>
+                                        <form>
+                                            <ul>
+
+                                                <li class="m_bottom_15">
+                                                    <label for="username" class="m_bottom_5 d_inline_b">Username</label><br>
+                                                    <input type="text" name="" id="username" class="r_corners full_width">
+                                                </li>
+
+
+
+                                                <li class="m_bottom_25">
+                                                    <label for="password" class="m_bottom_5 d_inline_b">Password</label><br>
+                                                    <input type="password" name="" id="password" class="r_corners full_width">
+                                                </li>
+                                                <li class="m_bottom_15">
+                                                    <input type="checkbox" class="d_none" id="checkbox_10"><label for="checkbox_10">Remember me</label>
+                                                </li>
+                                                <li class="clearfix m_bottom_30">
+                                                    <div class="col-md-4">
+                                                        <section id="socialLoginForm">
+                                                            @Html.Partial("~/Views/Account/_ExternalLoginsListPartial.cshtml", new IdentitySample.Models.ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+                                                        </section>
+                                                    </div>
+                                                    <button class="button_type_4 tr_all_hover r_corners f_left bg_scheme_color color_light f_mxs_none m_mxs_bottom_15">Log In3logo</button>
+                                                    <div class="f_right f_size_medium f_mxs_none">
+                                                        <a href="#" class="color_dark">Forgot your password?</a><br>
+                                                        <a href="#" class="color_dark">Forgot your username?</a>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </form>
+                                        <footer class="bg_light_color_1 t_mxs_align_c">
+                                            <h3 class="color_dark d_inline_middle d_mxs_block m_mxs_bottom_15">New Customer?</h3>
+                                            <a href="#" role="button" class="tr_all_hover r_corners button_type_4 bg_dark_color bg_cs_hover color_light d_inline_middle m_mxs_left_0">Create an Account</a>
+                                        </footer>
+            </section>*@
     </div>
    
+
     <button class="t_align_c r_corners type_2 tr_all_hover animate_ftl" id="go_to_top"><i class="fa fa-angle-up"></i></button>
     <!--scripts include-->
     <script src="@Url.Content("~/Content/js/jquery-2.1.0.min.js")"></script>
@@ -722,6 +1005,9 @@
     <script src="@Url.Content("~/Content/js/jquery.custom-scrollbar.js")"></script>
     <script src="@Url.Content("~/Content/js/scripts.js")"></script>
     <script type="text/javascript" src="../../../../s7.addthis.com/js/300/addthis_widget.js#pubid=xa-5306f8f674bfda4c"></script>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
 </body>
 
 <!-- Mirrored from velikorodnov.com/html/flatastic/classic/index_layout_wide.html by HTTrack Website Copier/3.x [XR&CO'2013], Tue, 01 Nov 2016 08:25:28 GMT -->
