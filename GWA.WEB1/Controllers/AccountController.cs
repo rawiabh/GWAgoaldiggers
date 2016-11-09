@@ -736,5 +736,30 @@ namespace IdentitySample.Controllers
             smtpClient.EnableSsl = true;
             smtpClient.Send(msg);
         }
+
+        // GET: Account/Details/5
+        public ActionResult Details(string idUser)
+        {
+            User u = new User();
+           // p = ps.GetById(id);
+
+            RegisterViewModel  uvm = new RegisterViewModel 
+            {
+                //UserName = u.UserName,
+                Email = u.Email,
+                FirstName = u.FirstName,
+                LastName = u.LastName,
+                Country = u.Country,
+                BirthDate = u.BirthDate,
+                JoinDate = u.JoinDate
+                    ,
+                EmailLinkDate = u.EmailLinkDate,
+                LAstLoginDate = u.LAstLoginDate,
+               
+
+            };
+            return View(uvm);
+        }
+
     }
 }

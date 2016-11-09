@@ -85,14 +85,14 @@ namespace GWA.Controllers.Products
                         status = item.status,
                         UpdateDate = new DateTime(),
                         ImageUrl = item.ImageUrl,
-                        IdUser = item.IdUser
+                        IdUser = item.User.Id
                     });
             }
 
             int pageSize = 3;
             int pageNumber = (page ?? 1);
-            return View(pvm.ToPagedList(pageNumber, pageSize));
-            
+             return View(pvm.ToPagedList(pageNumber, pageSize));
+           
         }
 
         // GET: Product/Details/5
@@ -106,7 +106,7 @@ namespace GWA.Controllers.Products
                 CategoryId = p.IdCategory,
                 CreationDate = p.CreationDate,
                 CurrentPrice = p.CurrentPrice,
-                IdUser = 1,
+                IdUser = "1",
                 Name = p.Name,
                 reference = p.reference,
                 status = p.status,
@@ -138,11 +138,11 @@ namespace GWA.Controllers.Products
                 IdCategory = pvm.CategoryId,
                 CreationDate = new DateTime(),
                 CurrentPrice = pvm.CurrentPrice,
-<<<<<<< HEAD
+
                 //IdUser = 1,
-=======
-                IdUser = pvm.IdUser,
->>>>>>> refs/remotes/origin/nour
+
+              //  IdUser = pvm.IdUser,
+
                 Name = pvm.Name,
                 reference= pvm.reference,
                 status = pvm.status,
@@ -177,7 +177,7 @@ namespace GWA.Controllers.Products
                 CategoryId = p.IdCategory,
                 CreationDate = p.CreationDate,
                 CurrentPrice = p.CurrentPrice,
-                IdUser = 1,
+                IdUser = "1",
                 Name = p.Name,
                 reference = p.reference,
                 status = p.status,
@@ -233,7 +233,7 @@ namespace GWA.Controllers.Products
                 CategoryId = p.IdCategory,
                 CreationDate = p.CreationDate,
                 CurrentPrice = p.CurrentPrice,
-                IdUser = 1,
+                IdUser = "1",
                 Name = p.Name,
                 reference = p.reference,
                 status = p.status,
