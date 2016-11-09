@@ -1,0 +1,112 @@
+﻿@model GWA.Domaine.Entities.Auction
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>Auction</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.AuctionValue)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.AuctionValue)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.AuctionTimer)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.AuctionTimer)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.TimeLeft)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.TimeLeft)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.StartDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.EndtDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.EndtDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Title)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Title)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.FinalPrice)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.FinalPrice)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.validator)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.validator)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.IdProduct)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.IdProduct)
+            </dd>
+    
+        </dl>
+    
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+    
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Liste auctions")
+            </div>
+        }
+    </div>
+</body>
+</html>
