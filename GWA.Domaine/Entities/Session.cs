@@ -10,11 +10,11 @@ namespace GWA.Domaine.Entities
 {
    public class Session
     {
-        
-        //public int Id { get; set; }
-        [Key, ForeignKey("User")]
-        public int IdUser { get; set; }
-
+       // [Key]
+       // public int Id { get; set; }
+       
+       [Key]
+        public int IdSession { get; set; }
         public virtual User User { get; set; }
     }
 }
