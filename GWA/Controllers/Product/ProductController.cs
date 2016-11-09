@@ -92,7 +92,7 @@ namespace GWA.Controllers.Products
             int pageSize = 3;
             int pageNumber = (page ?? 1);
             return View(pvm.ToPagedList(pageNumber, pageSize));
-            
+
         }
 
         // GET: Product/Details/5
@@ -121,11 +121,11 @@ namespace GWA.Controllers.Products
         public ActionResult Create()
         {
             var pvm = new ProductViewModel();
-            List<GWA.Domaine.Entities.Category> Categories = cs.GetAll().ToList() ;
+            List<GWA.Domaine.Entities.Category> Categories = cs.GetAll().ToList();
             pvm.Category = Categories.ToSelectListItems();
 
             return View(pvm);
-          
+
         }
 
         // POST: Product/Create
@@ -140,12 +140,12 @@ namespace GWA.Controllers.Products
                 CurrentPrice = pvm.CurrentPrice,
                 IdUser = pvm.IdUser,
                 Name = pvm.Name,
-                reference= pvm.reference,
+                reference = pvm.reference,
                 status = pvm.status,
                 UpdateDate = new DateTime(),
                 ImageUrl = pvm.ImageUrl
-                
-                
+
+
             };
             ps.Add(t);
             ps.Commit();
@@ -177,7 +177,7 @@ namespace GWA.Controllers.Products
                 Name = p.Name,
                 reference = p.reference,
                 status = p.status,
-                UpdateDate = new DateTime(), 
+                UpdateDate = new DateTime(),
                 ImageUrl = p.ImageUrl
 
             };
@@ -188,7 +188,7 @@ namespace GWA.Controllers.Products
 
         // POST: Product/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, ProductViewModel pvm , HttpPostedFileBase Image)
+        public ActionResult Edit(int id, ProductViewModel pvm, HttpPostedFileBase Image)
         {
             Product p = new Product();
             p = ps.GetById(id);
@@ -201,7 +201,7 @@ namespace GWA.Controllers.Products
             p.status = pvm.status;
             p.UpdateDate = pvm.UpdateDate;
 
-            
+
 
 
             ps.Update(p);
@@ -248,6 +248,4 @@ namespace GWA.Controllers.Products
             ps.Delete(p);
             ps.Commit();
             return RedirectToAction("Index");
-        }
-    }
-}
+        } }}
