@@ -73,6 +73,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Auctions\AuctionService.cs" />
     <Compile Include="Categories\CategoryService.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Products\ProductService.cs" />
