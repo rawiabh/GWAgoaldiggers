@@ -1,0 +1,92 @@
+﻿@model GWA.WEB1.Models.ShoppingCarts.ShoppingCartViewModel
+
+
+@{
+    ViewBag.Title = "Shopping Cart";
+    HttpContextBase httpContext = new HttpContextWrapper(HttpContext.Current);
+}
+<script src="@Url.Content("~/js/jquery-2.1.0.min.js")"></script>
+<script type="text/javascript">
+    $(function () {
+        $(".RemoveLink").click(function () {
+            var recordToDelete = $(this).attr("data-id");
+            if (recordToDelete != '') {
+                $.post("/ShoppingCartService/RemoveFromCart", { "HttpContextBase": httpContext, "id": recordToDelete },
+                    function (data) {
+                        
+                        if (data.ItemCount == 0) {
+                            $('#row-' + data.DeleteId).fadeOut('slow');
+                        } else {
+                            $('#item-count-' + data.DeleteId).text(data.ItemCount);
+                        }
+                        $('#cart-total').text(data.CartTotal);
+                        $('#update-message').text(data.Message);
+                        $('#cart-status').text('Cart (' + data.CartCount + ')');
+                    });
+            }
+        });
+    });
+</script>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <table class="table">
+        <tr>
+            <th>
+                Preview Image
+            </th>
+            <th>
+                Product Name
+            </th>
+            <th>
+                Price/Unit
+            </th>
+            <th>
+                Quantity
+            </th>
+            <th>
+                Total Price
+            </th>
+
+        </tr>
+
+        @foreach (var item in Model.CartItems)
+        {
+            <tr>
+                <td>
+                    image
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product.CurrentPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalPrice)
+                </td>
+
+                <td>
+                    @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    <br />
+
+</body>
+</html>
+
