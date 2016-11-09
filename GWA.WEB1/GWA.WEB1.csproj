@@ -725,9 +725,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="ApplicationInsights.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -742,6 +739,7 @@
     <Content Include="fonts\fontawesome-webfontba72.ttf" />
     <Content Include="fonts\fontawesome-webfontba72.woff" />
     <Content Include="fonts\fontawesome-webfontd41d.eot" />
+    <Content Include="ApplicationInsights.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -873,6 +871,10 @@
     <ProjectReference Include="..\GWA.Domaine\GWA.Domaine.csproj">
       <Project>{40e3d9c6-6106-4d2f-90c5-128bf9c46864}</Project>
       <Name>GWA.Domaine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GWA.Service\GWA.Service.csproj">
+      <Project>{C3FAB069-9815-4E53-9455-5A102D8BF993}</Project>
+      <Name>GWA.Service</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

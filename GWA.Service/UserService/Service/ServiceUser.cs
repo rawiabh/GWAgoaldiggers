@@ -1,15 +1,20 @@
 ﻿using GWA.Data.Infrastructure;
 using GWA.Domaine.Entities;
 using GWA.Service.Pattern;
+using Microsoft.AspNet.Identity;
+
+using Microsoft.AspNet.Identity.EntityFramework;
+using Owin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GWA.Data.Context;
 
 namespace GWA.Service.UserService.Service
 {
-    class ServiceUser : Service<User>
+   public class ServiceUser : Service<User>
     {
         private static IUnitOfWork utwk = new UnitOfWork(new DatabaseFactory());
 
@@ -17,7 +22,20 @@ namespace GWA.Service.UserService.Service
         {
 
         }
+        GWAContext context = new GWAContext();
+        public List<string> GetUserRoles(string username)
+        {
+            var UserManager = new UserManager<User>(new UserStore<User>(context));
+            List<string> ListOfRoleNames = new List<string>();
+            var ListOfRoleIds = UserManager.FindByName(username).Roles.Select(x => x.RoleId).ToList();
+            //foreach (string id in ListOfRoleIds)
+            //{
+            //    string rolename = RoleManager.FindById(id).Name;
+            //    ListOfRoleNames.Add(rolename);
+            //}
 
+            return ListOfRoleNames;
+        }
 
         //public IEnumerable<User> GetUserByRole(string Role)
         //{

@@ -15,18 +15,29 @@ using static IdentitySample.Controllers.ManageController;
 using GWA.Data.Context;
 using Microsoft.AspNet.Identity.EntityFramework;
 using GWA.Domaine.Entities;
+using GWA.Service.UserService.Service;
 
 namespace IdentitySample.Controllers
 {
+
+
+   
+
     [Authorize]
     public class AccountController : Controller
     {
         GWAContext context;
+
+        ServiceUser service = null;
+        
+
+
         public AccountController()
         {
             context = new GWAContext();
+            service = new ServiceUser();
         }
-
+        
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
         {
             UserManager = userManager;
@@ -740,9 +751,13 @@ namespace IdentitySample.Controllers
         // GET: Account/Details/5
         public ActionResult Details(string idUser)
         {
+
+            
+            Product n = new Product();
+           
             User u = new User();
            // p = ps.GetById(id);
-
+           //u.is
             RegisterViewModel  uvm = new RegisterViewModel 
             {
                 //UserName = u.UserName,
