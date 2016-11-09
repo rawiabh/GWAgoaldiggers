@@ -73,7 +73,7 @@ namespace GWA.Data.Context
 
       
        // DbSet<User> usersAuction { get; set; }
-        DbSet<Product> products { get; set; }
+       public  DbSet<Product> products { get; set; }
         DbSet<Auction> auctions { get; set; }
         DbSet<Token> tokens { get; set; }
         DbSet<Category> category { get; set; }
