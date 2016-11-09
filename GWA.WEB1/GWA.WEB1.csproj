@@ -825,6 +825,7 @@
     <Content Include="Views\Shared\_GridPager.cshtml" />
     <Content Include="Views\Home\Index3.cshtml" />
     <Content Include="Views\Shared\_Layout2.cshtml" />
+    <Content Include="Views\Account\Profil.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

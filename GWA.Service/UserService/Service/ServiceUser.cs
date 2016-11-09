@@ -32,6 +32,8 @@ namespace GWA.Service.UserService.Service
             //{
             //    string rolename = RoleManager.FindById(id).Name;
             //    ListOfRoleNames.Add(rolename);
+
+
             //}
 
             return ListOfRoleNames;
