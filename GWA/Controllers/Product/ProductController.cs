@@ -10,7 +10,7 @@ using System.Web.Mvc;
 using GWA.Helpers;
 using System.IO;
 using System.Net;
-//using PagedList;
+using PagedList;
 
 
 namespace GWA.Controllers.Products
@@ -85,14 +85,14 @@ namespace GWA.Controllers.Products
                         status = item.status,
                         UpdateDate = new DateTime(),
                         ImageUrl = item.ImageUrl,
-                       // IdUser = item.IdUser
+                        IdUser = item.User.Id
                     });
             }
 
             int pageSize = 3;
             int pageNumber = (page ?? 1);
-            // return View(pvm.ToPagedList(pageNumber, pageSize));
-            return View();
+             return View(pvm.ToPagedList(pageNumber, pageSize));
+           
         }
 
         // GET: Product/Details/5
@@ -106,7 +106,7 @@ namespace GWA.Controllers.Products
                 CategoryId = p.IdCategory,
                 CreationDate = p.CreationDate,
                 CurrentPrice = p.CurrentPrice,
-                IdUser = 1,
+                IdUser = "1",
                 Name = p.Name,
                 reference = p.reference,
                 status = p.status,
@@ -177,7 +177,7 @@ namespace GWA.Controllers.Products
                 CategoryId = p.IdCategory,
                 CreationDate = p.CreationDate,
                 CurrentPrice = p.CurrentPrice,
-                IdUser = 1,
+                IdUser = "1",
                 Name = p.Name,
                 reference = p.reference,
                 status = p.status,
@@ -233,7 +233,7 @@ namespace GWA.Controllers.Products
                 CategoryId = p.IdCategory,
                 CreationDate = p.CreationDate,
                 CurrentPrice = p.CurrentPrice,
-                IdUser = 1,
+                IdUser = "1",
                 Name = p.Name,
                 reference = p.reference,
                 status = p.status,

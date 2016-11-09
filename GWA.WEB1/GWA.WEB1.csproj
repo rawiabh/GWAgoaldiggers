@@ -293,6 +293,36 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\assetsN\img\bg\1.jpg" />
+    <Content Include="Content\assetsN\img\bg\11.jpg" />
+    <Content Include="Content\assetsN\img\bg\13.jpg" />
+    <Content Include="Content\assetsN\img\bg\14.jpg" />
+    <Content Include="Content\assetsN\img\bg\15.jpg" />
+    <Content Include="Content\assetsN\img\bg\16.jpg" />
+    <Content Include="Content\assetsN\img\bg\17.jpg" />
+    <Content Include="Content\assetsN\img\bg\18.jpg" />
+    <Content Include="Content\assetsN\img\bg\19.jpg" />
+    <Content Include="Content\assetsN\img\bg\2.jpg" />
+    <Content Include="Content\assetsN\img\bg\21.jpg" />
+    <Content Include="Content\assetsN\img\bg\25.jpg" />
+    <Content Include="Content\assetsN\img\bg\29.jpg" />
+    <Content Include="Content\assetsN\img\bg\3.jpg" />
+    <Content Include="Content\assetsN\img\bg\30.jpg" />
+    <Content Include="Content\assetsN\img\bg\7.jpg" />
+    <Content Include="Content\assetsN\img\bg\8.jpg" />
+    <Content Include="Content\assetsN\img\bg\9.jpg" />
+    <Content Include="Content\assetsN\img\bg\img1.jpg" />
+    <Content Include="Content\assetsN\img\bg\img10.jpg" />
+    <Content Include="Content\assetsN\img\bg\img11.jpg" />
+    <Content Include="Content\assetsN\img\bg\img12.jpg" />
+    <Content Include="Content\assetsN\img\bg\img2.jpg" />
+    <Content Include="Content\assetsN\img\bg\img3.jpg" />
+    <Content Include="Content\assetsN\img\bg\img4.jpg" />
+    <Content Include="Content\assetsN\img\bg\img5.jpg" />
+    <Content Include="Content\assetsN\img\bg\img6.jpg" />
+    <Content Include="Content\assetsN\img\bg\img7.jpg" />
+    <Content Include="Content\assetsN\img\bg\img8.jpg" />
+    <Content Include="Content\assetsN\img\bg\img9.jpg" />
     <Content Include="Content\assets\boxed_bgtile.html" />
     <Content Include="Content\assets\coloredbg.html" />
     <Content Include="Content\assets\gridtile.html" />
@@ -365,6 +395,9 @@
     <Content Include="Content\images\article_img_4.jpg" />
     <Content Include="Content\images\article_img_5.jpg" />
     <Content Include="Content\images\article_img_6.jpg" />
+    <Content Include="Content\images\auctionNourwag\1.jpg" />
+    <Content Include="Content\images\auctionNourwag\2.jpg" />
+    <Content Include="Content\images\auctionNourwag\3.jpg" />
     <Content Include="Content\images\banner_img_1.png" />
     <Content Include="Content\images\banner_img_2.png" />
     <Content Include="Content\images\banner_img_3.png" />
@@ -620,6 +653,7 @@
     <Content Include="Content\js\jquery-2.1.0.min.js" />
     <Content Include="Content\js\jquery-migrate-1.2.1.min.js" />
     <Content Include="Content\js\jquery-ui.min.js" />
+    <Content Include="Content\js\jquery.backstretch.min.js" />
     <Content Include="Content\js\jquery.custom-scrollbar.js" />
     <Content Include="Content\js\jquery.easing.1.3.js" />
     <Content Include="Content\js\jquery.fancybox-1.3.4.js" />
@@ -793,6 +827,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\assetsN\ajax\" />
+    <Folder Include="Content\assetsN\css\" />
+    <Folder Include="Content\assetsN\js\" />
+    <Folder Include="Content\assetsN\php\" />
+    <Folder Include="Content\assetsN\plugins\" />
+    <Folder Include="Content\assetsN\rs-img\" />
+    <Folder Include="Content\assetsN\video\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

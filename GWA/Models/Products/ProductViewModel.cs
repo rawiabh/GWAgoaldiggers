@@ -22,7 +22,7 @@ namespace GWA.Models.Product
         public string ImageUrl { get; set; }
 
 
-        public int IdUser { get; set; }
+        public string IdUser { get; set; }
 
         [Display(Name = "Categories")]
         public int CategoryId { get; set; }
