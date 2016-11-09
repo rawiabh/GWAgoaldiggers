@@ -323,6 +323,9 @@
     <Content Include="Content\assetsN\img\bg\img7.jpg" />
     <Content Include="Content\assetsN\img\bg\img8.jpg" />
     <Content Include="Content\assetsN\img\bg\img9.jpg" />
+    <Content Include="Content\assetsN\img\index\1.jpg" />
+    <Content Include="Content\assetsN\img\index\2.jpg" />
+    <Content Include="Content\assetsN\img\index\3.jpg" />
     <Content Include="Content\assets\boxed_bgtile.html" />
     <Content Include="Content\assets\coloredbg.html" />
     <Content Include="Content\assets\gridtile.html" />

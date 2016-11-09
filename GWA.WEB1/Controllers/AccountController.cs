@@ -740,23 +740,25 @@ namespace IdentitySample.Controllers
         // GET: Account/Details/5
         public ActionResult Details(string idUser)
         {
-            Product p = new Product();
-            p = ps.GetById(id);
+            User u = new User();
+           // p = ps.GetById(id);
 
-            ProductViewModel pvm = new ProductViewModel
+            RegisterViewModel  uvm = new RegisterViewModel 
             {
-                CategoryId = p.IdCategory,
-                CreationDate = p.CreationDate,
-                CurrentPrice = p.CurrentPrice,
-                IdUser = "1",
-                Name = p.Name,
-                reference = p.reference,
-                status = p.status,
-                UpdateDate = new DateTime(),
-                ImageUrl = p.ImageUrl
+                //UserName = u.UserName,
+                Email = u.Email,
+                FirstName = u.FirstName,
+                LastName = u.LastName,
+                Country = u.Country,
+                BirthDate = u.BirthDate,
+                JoinDate = u.JoinDate
+                    ,
+                EmailLinkDate = u.EmailLinkDate,
+                LAstLoginDate = u.LAstLoginDate,
+               
 
             };
-            return View(pvm);
+            return View(uvm);
         }
 
     }
