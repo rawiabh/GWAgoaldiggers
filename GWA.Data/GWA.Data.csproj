@@ -86,15 +86,6 @@
     <Compile Include="Infrastructure\IUnitOfWork.cs" />
     <Compile Include="Infrastructure\RepositoryBase.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
-    <Compile Include="Migrations\201611071015521_rourou.cs" />
-    <Compile Include="Migrations\201611071015521_rourou.Designer.cs">
-      <DependentUpon>201611071015521_rourou.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201611071455178_r2.cs" />
-    <Compile Include="Migrations\201611071455178_r2.Designer.cs">
-      <DependentUpon>201611071455178_r2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -130,14 +121,6 @@
     <Content Include="Scripts\ladda-bootstrap\ladda.min.js" />
     <Content Include="Scripts\ladda-bootstrap\spin.min.js" />
     <Content Include="Scripts\URI.js" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201611071015521_rourou.resx">
-      <DependentUpon>201611071015521_rourou.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201611071455178_r2.resx">
-      <DependentUpon>201611071455178_r2.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
