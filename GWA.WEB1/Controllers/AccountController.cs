@@ -736,5 +736,28 @@ namespace IdentitySample.Controllers
             smtpClient.EnableSsl = true;
             smtpClient.Send(msg);
         }
+
+        // GET: Account/Details/5
+        public ActionResult Details(string idUser)
+        {
+            Product p = new Product();
+            p = ps.GetById(id);
+
+            ProductViewModel pvm = new ProductViewModel
+            {
+                CategoryId = p.IdCategory,
+                CreationDate = p.CreationDate,
+                CurrentPrice = p.CurrentPrice,
+                IdUser = "1",
+                Name = p.Name,
+                reference = p.reference,
+                status = p.status,
+                UpdateDate = new DateTime(),
+                ImageUrl = p.ImageUrl
+
+            };
+            return View(pvm);
+        }
+
     }
 }
