@@ -1,23 +1,24 @@
-﻿using GWA.Models.Category;
+﻿using GWA.Domaine.Entities;
 using GWA.Service.Categories;
+using GWA.WEB1.Models.Category;
+using GWA.WEB1.Models.Product;
+using IdentitySample.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using GWA.Domaine.Entities;
-using System.IO;
-using System.Net;
-using GWA.Models.Product;
 
-namespace GWA.Controllers.Categories
+namespace GWA.WEB1.Controllers.Categories
 {
     public class CategoriesController : Controller
     {
         CategoryService cs = null;
         public CategoriesController()
         {
-           
+
             cs = new CategoryService();
         }
         // GET: Categories
@@ -43,10 +44,10 @@ namespace GWA.Controllers.Categories
             }
 
             var cat = cs.GetAll();
-            List<CategoryViewModel> cvm = new List<CategoryViewModel>();
+            List<CategoryViewModel> cvm1 = new List<CategoryViewModel>();
             foreach (var item in cat)
             {
-                cvm.Add(
+                cvm1.Add(
                     new CategoryViewModel
                     {
                         Id = item.Id,
@@ -55,7 +56,11 @@ namespace GWA.Controllers.Categories
                         ImageUrl = item.ImageUrl
                     });
             }
-            return View(cvm);
+LoginViewModel lvm =new LoginViewModel{
+    //cvm = cvm1 
+    Listcvm = cvm1
+};
+            return View(lvm);
         }
 
         // GET: Categories/Details/5
@@ -70,7 +75,7 @@ namespace GWA.Controllers.Categories
                 Id = p.Id,
                 Name = p.Name,
                 Description = p.Description,
-               ImageUrl = p.ImageUrl
+                ImageUrl = p.ImageUrl
 
             };
             return View(cvm);
@@ -80,7 +85,12 @@ namespace GWA.Controllers.Categories
         public ActionResult Create()
         {
             var cvm = new CategoryViewModel();
-            return View(cvm);
+            LoginViewModel lvm = new LoginViewModel
+            {
+                //cvm = cvm1 
+                cvm = cvm
+            };
+            return View(lvm);
         }
 
         // POST: Categories/Create
@@ -96,7 +106,7 @@ namespace GWA.Controllers.Categories
 
                 Description = cvm.Description,
 
-               // ImageUrl = cvm.ImageUrl
+                // ImageUrl = cvm.ImageUrl
 
             };
             cs.Add(c);
@@ -104,7 +114,7 @@ namespace GWA.Controllers.Categories
             //var path = Path.Combine(Server.MapPath("~/Content/Upload/"), Image.FileName);
             //Image.SaveAs(path);
             return RedirectToAction("Index");
-            
+
         }
 
         // GET: Categories/Edit/5
@@ -124,10 +134,17 @@ namespace GWA.Controllers.Categories
 
                 Description = c.Description,
 
-            //    ImageUrl = c.ImageUrl
+                //    ImageUrl = c.ImageUrl
 
             };
-            return View(cvm);
+            LoginViewModel lvm = new LoginViewModel
+            {
+                //cvm = cvm1 
+                cvm = cvm
+            };
+            return View(lvm);
+       
+           
         }
 
         // POST: Categories/Edit/5
@@ -138,8 +155,8 @@ namespace GWA.Controllers.Categories
             c = cs.GetById(id);
             c.Description = cvm.Description;
             c.Name = cvm.Name;
-           // c.ImageUrl = cvm.ImageUrl;
-           // c.ImageUrl = Image.FileName;
+            // c.ImageUrl = cvm.ImageUrl;
+            // c.ImageUrl = Image.FileName;
             cs.Update(c);
             cs.Commit();
             var path = Path.Combine(Server.MapPath("~/Content/Upload/"), Image.FileName);
@@ -167,12 +184,17 @@ namespace GWA.Controllers.Categories
 
                 Description = c.Description,
 
-               // ImageUrl = c.ImageUrl
-               
-                
+                // ImageUrl = c.ImageUrl
+
+
 
             };
-            return View(cvm);
+            LoginViewModel lvm = new LoginViewModel
+            {
+                //cvm = cvm1 
+                cvm = cvm
+            };
+            return View(lvm);
         }
 
         // POST: Categories/Delete/5
@@ -197,10 +219,10 @@ namespace GWA.Controllers.Categories
                 pvm.Add(
                     new ProductViewModel
                     {
-                         CategoryId = item.IdCategory,
+                        CategoryId = item.IdCategory,
                         CreationDate = item.CreationDate,
                         CurrentPrice = item.CurrentPrice,
-                        IdUser ="1",
+                        IdUser = "1",
                         Name = item.Name,
                         reference = item.reference,
                         status = item.status,
@@ -208,8 +230,14 @@ namespace GWA.Controllers.Categories
                         ImageUrl = item.ImageUrl
                     });
             }
-            return View(pvm);
 
+                LoginViewModel lvm = new LoginViewModel
+                {
+                    //cvm = cvm1 
+                    Listpvm = pvm
+                };
+                return View(lvm);
+            
         }
 
 
@@ -234,31 +262,45 @@ namespace GWA.Controllers.Categories
                         ImageUrl = item.ImageUrl
                     });
             }
-            return View(pvm);
 
+                LoginViewModel lvm = new LoginViewModel
+                {
+                    //cvm = cvm1 
+                    Listpvm = pvm
+                };
+                return View(lvm);
+
+
+            
         }
 
         public ActionResult gethighestProductPriceInEachCategory()
         {
             Product p = new Product();
-           p = cs.getHighestProductPriceineachCategory();
+            p = cs.getHighestProductPriceineachCategory();
             List<ProductViewModel> pvm = new List<ProductViewModel>();
-          
-                pvm.Add(
-                    new ProductViewModel
-                    {
-                        CategoryId = p.IdCategory,
-                        CreationDate = p.CreationDate,
-                        CurrentPrice = p.CurrentPrice,
-                        IdUser = "1",
-                        Name = p.Name,
-                        reference = p.reference,
-                        status = p.status,
-                        UpdateDate = new DateTime(),
-                        ImageUrl = p.ImageUrl
-                    });
-            
-            
+
+            pvm.Add(
+                new ProductViewModel
+                {
+                    CategoryId = p.IdCategory,
+                    CreationDate = p.CreationDate,
+                    CurrentPrice = p.CurrentPrice,
+                    IdUser = "1",
+                    Name = p.Name,
+                    reference = p.reference,
+                    status = p.status,
+                    UpdateDate = new DateTime(),
+                    ImageUrl = p.ImageUrl
+                });
+            LoginViewModel lvm = new LoginViewModel
+            {
+                //cvm = cvm1 
+             Listpvm = pvm
+        };
+            return View(lvm);
+
+
             return View(pvm);
 
 
@@ -285,7 +327,12 @@ namespace GWA.Controllers.Categories
                     ImageUrl = p.ImageUrl
                 });
 
-
+            LoginViewModel lvm = new LoginViewModel
+            {
+                //cvm = cvm1 
+                Listpvm = pvm
+        };
+            return View(lvm);
             return View(pvm);
 
 
@@ -295,7 +342,7 @@ namespace GWA.Controllers.Categories
         {
             Category c = new Category();
             //c = cs.getMostActiveCategory();
-            List <CategoryViewModel> cvm = new List<CategoryViewModel>();
+            List<CategoryViewModel> cvm = new List<CategoryViewModel>();
             cvm.Add(
                 new CategoryViewModel
                 {
@@ -308,7 +355,13 @@ namespace GWA.Controllers.Categories
 
                 }
                 );
-            return View(cvm);
+            LoginViewModel lvm = new LoginViewModel
+            {
+                Listcvm = cvm 
+                //Listpvm = pvm;
+        };
+            return View(lvm);
+            
 
 
 

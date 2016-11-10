@@ -1,0 +1,85 @@
+﻿@model IdentitySample.Models.LoginViewModel
+
+
+<div>
+    <h4>ProductViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.pvm.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pvm.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pvm.status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pvm.status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pvm.CreationDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pvm.CreationDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pvm.UpdateDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pvm.UpdateDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pvm.reference)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pvm.reference)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pvm.CurrentPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pvm.CurrentPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pvm.ImageUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pvm.ImageUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pvm.IdUser)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pvm.IdUser)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pvm.CategoryId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pvm.CategoryId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.pvm.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

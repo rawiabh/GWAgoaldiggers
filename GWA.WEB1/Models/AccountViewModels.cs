@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GWA.WEB1.Models.Category;
+using GWA.WEB1.Models.Product;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -60,6 +62,11 @@ namespace IdentitySample.Models
 
         [Display(Name = "Remember me?")]
         public bool RememberMe { get; set; }
+        public IEnumerable<CategoryViewModel> Listcvm;
+
+        public IEnumerable<ProductViewModel> Listpvm;
+        public CategoryViewModel cvm;
+        public ProductViewModel pvm;
     }
 
     public class RegisterViewModel

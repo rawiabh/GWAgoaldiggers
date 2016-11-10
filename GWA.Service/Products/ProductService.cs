@@ -23,7 +23,7 @@ namespace GWA.Service.Products
 
         ServiceUser us = new ServiceUser();
 
-      
+
         //public User getBestSeller()
         //{
         //    var u = (from p in dbf.DataContext.products

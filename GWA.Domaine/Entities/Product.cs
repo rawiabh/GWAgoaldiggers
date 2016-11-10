@@ -18,9 +18,9 @@ namespace GWA.Domaine.Entities
         public string reference { get; set; }
         public float CurrentPrice { get; set; }
         public string ImageUrl { get; set; }
-
-        [ForeignKey("User")]
-        public int IdUser { get; set; }
+        
+      // [ForeignKey("User")]
+ 
         public virtual User User { get; set; }
 
         [ForeignKey("Category")]

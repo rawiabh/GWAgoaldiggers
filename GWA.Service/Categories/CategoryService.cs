@@ -26,6 +26,14 @@ namespace GWA.Service.Categories
        (from p in dbf.DataContext.products where p.Category.Name == nom select p);
             return u;
         }
+
+        //second try
+        public IEnumerable<Product> getProductByCategory()
+        {
+            var u =
+         (from p in dbf.DataContext.products.OrderBy(m=>m.IdCategory) select p);
+            return u;
+        }
         public IEnumerable<Product> getProductsByCategory()
         {
             var u =
@@ -34,18 +42,32 @@ namespace GWA.Service.Categories
             return u;
         }
         
-  public Product getHighestProductPriceineachCategory()
-        {
-            // return dbf.DataContext.products.Where(b => b.CurrentPrice == max(dbf.DataContext.products..First();
-            var mm = dbf.DataContext.products.Max(b => b.CurrentPrice);
-            return (dbf.DataContext.products.OrderBy(m=>m.IdCategory).Where(b => b.CurrentPrice == mm).First());      
+  //public Product getHighestProductPriceineachCategory()
+  //      {
+  //          // return dbf.DataContext.products.Where(b => b.CurrentPrice == max(dbf.DataContext.products..First();
+  //          var mm = dbf.DataContext.products.Max(b => b.CurrentPrice);
+  //          return (dbf.DataContext.products.OrderBy(m=>m.IdCategory).Where(b => b.CurrentPrice == mm).First());      
 
-        }
-  public Product getLowestProductPriceineachCategory()
+  //      }
+
+    
+        public Product getHighestProductPriceineachCategory()
         {
-            // return dbf.DataContext.products.Where(b => b.CurrentPrice == max(dbf.DataContext.products..First();
+            var u = (from p in dbf.DataContext.products
+                    
+                     orderby p.CurrentPrice
+                     select p).Take(1);
+            Product prod = u.First();
+        
+
+            return prod;
+        }
+
+        public Product getLowestProductPriceineachCategory()
+        {
+           // return dbf.DataContext.products.Where(b => b.CurrentPrice == dbf.DataContext.products.Max(CurrentPrice);
             var mm = dbf.DataContext.products.Min(b => b.CurrentPrice);
-            return (dbf.DataContext.products.OrderBy(m => m.IdCategory).Where(b => b.CurrentPrice == mm).First());
+           return (dbf.DataContext.products.OrderBy(m => m.IdCategory).Where(b => b.CurrentPrice == mm).First());
 
         }
    //public Category getMostActiveCategory()
