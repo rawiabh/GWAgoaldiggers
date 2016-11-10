@@ -455,6 +455,7 @@
     <Content Include="Content\images\fw_slide_01.jpg" />
     <Content Include="Content\images\fw_slide_02.jpg" />
     <Content Include="Content\images\fw_slide_03.jpg" />
+    <Content Include="Content\images\gowin.png" />
     <Content Include="Content\images\grabbing.png" />
     <Content Include="Content\images\gradient\g30.html" />
     <Content Include="Content\images\gradient\g40.html" />

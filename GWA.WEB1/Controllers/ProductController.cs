@@ -132,7 +132,7 @@ namespace GWA.WEB1.Controllers
             Product p = new Product();
             p = ps.GetById(id);
 
-            ProductViewModel pvm = new ProductViewModel()
+            ProductViewModel pvm = new ProductViewModel
             {
                 CategoryId = p.IdCategory,
                 CreationDate = p.CreationDate,
