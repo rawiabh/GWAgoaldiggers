@@ -21,7 +21,7 @@ namespace IdentitySample
         private void createRolesandUsers()
         {
 
-         GWAContext context = new GWAContext();
+            GWAContext context = new GWAContext();
 
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
             var UserManager = new UserManager<User>(new UserStore<User>(context));
