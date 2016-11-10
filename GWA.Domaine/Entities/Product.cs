@@ -24,7 +24,7 @@ namespace GWA.Domaine.Entities
 
 
         //[ForeignKey("IdentityUser")]
-        //public int IdUser { get; set; }
+        public  string IdUser { get; set; }
         public virtual User User { get; set; }
 
         [ForeignKey("Category")]

@@ -175,9 +175,9 @@
     <Compile Include="Infrastructure\IUnitOfWork.cs" />
     <Compile Include="Infrastructure\RepositoryBase.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
-    <Compile Include="Migrations\201611091627301_m21.cs" />
-    <Compile Include="Migrations\201611091627301_m21.Designer.cs">
-      <DependentUpon>201611091627301_m21.cs</DependentUpon>
+    <Compile Include="Migrations\201611101335570_m7.cs" />
+    <Compile Include="Migrations\201611101335570_m7.Designer.cs">
+      <DependentUpon>201611101335570_m7.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -201,11 +201,6 @@
       <Project>{40e3d9c6-6106-4d2f-90c5-128bf9c46864}</Project>
       <Name>GWA.Domaine</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201611091627301_m21.resx">
-      <DependentUpon>201611091627301_m21.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -233,6 +228,11 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201611101335570_m7.resx">
+      <DependentUpon>201611101335570_m7.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

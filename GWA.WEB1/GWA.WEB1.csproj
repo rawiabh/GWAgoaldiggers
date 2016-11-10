@@ -260,26 +260,13 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\Products\ProductController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
     <Compile Include="Controllers\UserAdminController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\ExtensionMethods.cs" />
-    <Compile Include="Migrations\201611071100429_version1.cs" />
-    <Compile Include="Migrations\201611071100429_version1.Designer.cs">
-      <DependentUpon>201611071100429_version1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201611071109395_version2.cs" />
-    <Compile Include="Migrations\201611071109395_version2.Designer.cs">
-      <DependentUpon>201611071109395_version2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201611080152284_ver2.cs" />
-    <Compile Include="Migrations\201611080152284_ver2.Designer.cs">
-      <DependentUpon>201611080152284_ver2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminViewModel.cs" />
     <Compile Include="Models\ExtensionMethods.cs" />
@@ -836,6 +823,9 @@
     <Content Include="Views\Shared\_GridPager.cshtml" />
     <Content Include="Views\Home\Index3.cshtml" />
     <Content Include="Views\Shared\_Layout2.cshtml" />
+    <Content Include="Views\Product\Create.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Product\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -846,7 +836,6 @@
     <Folder Include="Content\assetsN\plugins\" />
     <Folder Include="Content\assetsN\rs-img\" />
     <Folder Include="Content\assetsN\video\" />
-    <Folder Include="Views\Product\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -861,15 +850,6 @@
     <WCFMetadataStorage Include="Service References\ASPSMSX2\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201611071100429_version1.resx">
-      <DependentUpon>201611071100429_version1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201611071109395_version2.resx">
-      <DependentUpon>201611071109395_version2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201611080152284_ver2.resx">
-      <DependentUpon>201611080152284_ver2.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
