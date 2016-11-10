@@ -21,11 +21,17 @@ namespace IdentitySample
 
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.MapRoute(
-            "Default", // Route name
-            "{controller}/{action}/{id}", // URL with parameters
-            new { controller = "Home", action = "Index", id = UrlParameter.Optional },
-            new string[] {"GWA.WEB1.Controllers"});
+               "Default",                                              // Route name
+               "{controller}/{action}/{id}",                           // URL with parameters
+               new { controller = "Home", action = "Index", id = "" }  // Parameter defaults
+           );
 
+
+            //routes.MapRoute(
+           //"Default", // Route name
+           //"{controller}/{action}/{id}", // URL with parameters
+           //new { controller = "Product", action = "Index", id = UrlParameter.Optional },
+           //new string[] { "GWA.WEB1.Controllers.Products" });
 
             //routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 

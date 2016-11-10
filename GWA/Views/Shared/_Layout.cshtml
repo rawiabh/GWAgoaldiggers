@@ -25,6 +25,7 @@
     <script src="@Url.Content("~/js/modernizr.js")"></script>
 </head>
 <body>
+    @RenderSection("Scripts", false); 
     <!--boxed layout-->
     <div class="wide_layout relative w_xs_auto">
         <!--[if (lt IE 9) | IE 9]>
@@ -51,7 +52,7 @@
                         <div class="col-lg-4 col-md-4 col-sm-5 t_align_r t_xs_align_c">
                             <ul class="horizontal_list clearfix d_inline_b t_align_l f_size_small site_settings type_2">
                                 <li class="container3d relative">
-                                    <a role="button" href="#" class="color_dark" id="lang_button"><img class="d_inline_middle m_right_10" src="@Url.Content("images/flag_en.jpg")" alt="">English</a>
+                                    <a role="button" href="#" class="color_dark" id="lang_button"><img class="d_inline_middle m_right_10" src="@Url.Content("/images/flag_en.jpg")" alt="">English</a>
                                     <ul class="dropdown_list type_2 top_arrow color_light">
                                         <li><a href="#" class="tr_delay_hover color_light"><img class="d_inline_middle" src="@Url.Content("/images/flag_en.jpg")" alt="">English</a></li>
                                         <li><a href="#" class="tr_delay_hover color_light"><img class="d_inline_middle" src="@Url.Content("/images/flag_fr.jpg")" alt="">French</a></li>
@@ -80,7 +81,7 @@
                         <div class="clearfix row">
                             <div class="col-lg-2 t_md_align_c m_md_bottom_15">
                                 <a href="@Url.Content("~/Content/index-2.html")" class="logo d_md_inline_b">
-                                    <img src="images/logo.png" alt="">
+                                    <img src="/images/logo.png" alt="">
                                 </a>
                             </div>
                             <div class="col-lg-10 clearfix t_sm_align_c">
@@ -204,14 +205,9 @@
                                                 </div>
                                             </li>
                                             <li class="relative f_xs_none m_xs_bottom_5 m_left_10 m_xs_left_0">
-                                                <a href="@Url.Content("~/Content/blog.html")" class="tr_delay_hover color_dark tt_uppercase r_corners"><b>Location</b></a>
+                                                <a href="@Url.Content("~/Auctions/Createdemand")" class="tr_delay_hover color_dark tt_uppercase r_corners"><b>Sell an item</b></a>
                                                 <!--sub menu-->
-                                                <div class="sub_menu_wrap top_arrow d_xs_none type_2 tr_all_hover clearfix r_corners">
-                                                    <ul class="sub_menu">
-                                                        <li><a class="color_dark tr_delay_hover" href="@Url.Content("~/Content/features_shortcodes.html")">Shortcodes</a></li>
-                                                        <li><a class="color_dark tr_delay_hover" href="@Url.Content("~/Content/features_typography.html")">Typography</a></li>
-                                                    </ul>
-                                                </div>
+                                               
                                             </li>
                                             @*<li class="relative f_xs_none m_xs_bottom_5 m_left_10 m_xs_left_0"><a href="@Url.Content("~/Content/contact.html")" class="tr_delay_hover color_dark tt_uppercase r_corners"><b>Contact</b></a></li>*@
                                         </ul>

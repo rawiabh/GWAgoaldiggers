@@ -1,4 +1,5 @@
 ﻿using GWA.Domaine.Entities;
+using IdentitySample.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -6,7 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace GWA.WEB1.Models.Product
+namespace GWA.WEB1.Models.Products
 {
     public class ProductViewModel
     {
@@ -39,5 +40,6 @@ namespace GWA.WEB1.Models.Product
 
         public User BestSeller { get; set; }
 
+        //public LoginViewModel lvm { get; set; }
     }
 }

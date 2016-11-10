@@ -9,11 +9,16 @@ using GWA.Domaine.Entities;
 using System.IO;
 using System.Net;
 using GWA.Models.Product;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using GWA.Data.Context;
 
 namespace GWA.Controllers.Categories
 {
     public class CategoriesController : Controller
     {
+        GWAContext context;
+
         CategoryService cs = null;
         public CategoriesController()
         {
@@ -21,6 +26,13 @@ namespace GWA.Controllers.Categories
             cs = new CategoryService();
         }
         // GET: Categories
+
+        public User getCurrentUser()
+        {
+            var UserManager = new UserManager<User>(new UserStore<User>(context));
+            var user = UserManager.FindById(User.Identity.GetUserId());
+            return user;
+        }
         public ActionResult Index(string currentFilter, string searchString, int? page)
         {
             if (searchString != null)
@@ -200,7 +212,7 @@ namespace GWA.Controllers.Categories
                          CategoryId = item.IdCategory,
                         CreationDate = item.CreationDate,
                         CurrentPrice = item.CurrentPrice,
-                        IdUser ="1",
+                        IdUser = getCurrentUser().Id,
                         Name = item.Name,
                         reference = item.reference,
                         status = item.status,
@@ -226,7 +238,7 @@ namespace GWA.Controllers.Categories
                         CategoryId = item.IdCategory,
                         CreationDate = item.CreationDate,
                         CurrentPrice = item.CurrentPrice,
-                        IdUser = "1",
+                        IdUser = getCurrentUser().Id,
                         Name = item.Name,
                         reference = item.reference,
                         status = item.status,
@@ -250,7 +262,7 @@ namespace GWA.Controllers.Categories
                         CategoryId = p.IdCategory,
                         CreationDate = p.CreationDate,
                         CurrentPrice = p.CurrentPrice,
-                        IdUser = "1",
+                        IdUser = getCurrentUser().Id,
                         Name = p.Name,
                         reference = p.reference,
                         status = p.status,
@@ -277,7 +289,7 @@ namespace GWA.Controllers.Categories
                     CategoryId = p.IdCategory,
                     CreationDate = p.CreationDate,
                     CurrentPrice = p.CurrentPrice,
-                    IdUser = "1",
+                    IdUser = getCurrentUser().Id,
                     Name = p.Name,
                     reference = p.reference,
                     status = p.status,

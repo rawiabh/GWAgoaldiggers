@@ -10,7 +10,7 @@ using GWA.Helpers;
 using System.IO;
 using System.Net;
 using PagedList;
-using GWA.WEB1.Models.Product;
+using GWA.WEB1.Models.Products;
 using Microsoft.AspNet.Identity;
 using IdentitySample.Models;
 using Microsoft.AspNet.Identity.Owin;
@@ -18,7 +18,7 @@ using Microsoft.Owin.Security;
 using GWA.Data.Context;
 using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace GWA.WEB1.Controllers.Products
+namespace GWA.WEB1.Controllers
 {
     public class ProductController : Controller
     {
@@ -89,11 +89,11 @@ namespace GWA.WEB1.Controllers.Products
                     break;
             }
 
-
-            List<ProductViewModel> pvm = new List<ProductViewModel>();
+            
+            List <ProductViewModel> pvm1 =  new List<ProductViewModel>();
             foreach (var item in prod)
             {
-                pvm.Add(
+                pvm1.Add(
                     new ProductViewModel
                     {
                         Id = item.Id,
@@ -105,7 +105,7 @@ namespace GWA.WEB1.Controllers.Products
                         status = item.status,
                         UpdateDate = item.UpdateDate,
                         ImageUrl = item.ImageUrl,
-                        //IdUser = item.IdUser
+                      IdUser = item.IdUser
                         //BestSeller = u
                     });
             }
@@ -113,9 +113,16 @@ namespace GWA.WEB1.Controllers.Products
             int pageSize = 3;
             int pageNumber = (page ?? 1);
 
-            
-            
-            return View(pvm.ToPagedList(pageNumber, pageSize) );
+
+            LoginViewModel lvm = new LoginViewModel
+            {
+                pvm = pvm1.ToPagedList(pageNumber, pageSize)
+               
+            };
+
+            lvm.pvm = (IPagedList<ProductViewModel>)pvm1.ToPagedList(pageNumber, pageSize);
+
+            return View(lvm );
             
         }
 
@@ -138,7 +145,13 @@ namespace GWA.WEB1.Controllers.Products
                 ImageUrl = p.ImageUrl
 
             };
-            return View(pvm);
+
+            LoginViewModel lvm = new LoginViewModel
+            {
+                prodVM = pvm
+
+            };
+            return View(lvm);
         }
 
         // GET: Product/Create
@@ -148,28 +161,33 @@ namespace GWA.WEB1.Controllers.Products
             List<Category> Categories = cs.GetAll().ToList() ;
             pvm.Category = Categories.ToSelectListItems();
 
-            return View(pvm);
+            LoginViewModel lvm = new LoginViewModel
+            {
+                prodVM = pvm
+
+            };
+            return View(lvm);
           
         }
 
         // POST: Product/Create
         [HttpPost]
-        public ActionResult Create(ProductViewModel pvm, HttpPostedFileBase Image)
+        public ActionResult Create(LoginViewModel lvm, HttpPostedFileBase Image)
         {
-            pvm.ImageUrl = Image.FileName;
+            lvm.prodVM.ImageUrl = Image.FileName;
+            User u = getCurrentUser();
             Product t = new Product
             {
-                IdCategory = pvm.CategoryId,
+                IdCategory = lvm.prodVM.CategoryId,
                 CreationDate = DateTime.Now,
-                CurrentPrice = pvm.CurrentPrice,
-                //IdUser = pvm.IdUser,
-                Name = pvm.Name,
-                reference= pvm.reference,
+                CurrentPrice = lvm.prodVM.CurrentPrice,
+                //User =u ,
+                Name = lvm.prodVM.Name,
+                reference= lvm.prodVM.reference,
                 status = false,
                 UpdateDate = DateTime.Now,
-                ImageUrl = pvm.ImageUrl
-                
-                
+                ImageUrl = lvm.prodVM.ImageUrl,
+                IdUser= u.Id
             };
             ps.Add(t);
             ps.Commit();

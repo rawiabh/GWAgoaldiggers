@@ -10,5 +10,8 @@ namespace GWA.Domaine.Entities
     {
         public String Type { get; set; }
         public String PersonnalDescription { get; set; }
+        public ShoppingCart ShoppingCart { get; set; }
+
+
     }
 }

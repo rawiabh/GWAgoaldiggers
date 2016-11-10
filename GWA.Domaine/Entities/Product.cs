@@ -17,10 +17,14 @@ namespace GWA.Domaine.Entities
         public DateTime UpdateDate { get; set; }
         public string reference { get; set; }
         public float CurrentPrice { get; set; }
-        public string ImageUrl { get; set; }
+
         
-      // [ForeignKey("User")]
- 
+        public string ImageUrl { get; set; }
+
+
+
+        //[ForeignKey("IdentityUser")]
+        public  string IdUser { get; set; }
         public virtual User User { get; set; }
 
         [ForeignKey("Category")]

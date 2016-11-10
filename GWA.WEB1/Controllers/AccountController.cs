@@ -15,18 +15,29 @@ using static IdentitySample.Controllers.ManageController;
 using GWA.Data.Context;
 using Microsoft.AspNet.Identity.EntityFramework;
 using GWA.Domaine.Entities;
+using GWA.Service.UserService.Service;
 
 namespace IdentitySample.Controllers
 {
+
+
+   
+
     [Authorize]
     public class AccountController : Controller
     {
         GWAContext context;
+
+        ServiceUser service = null;
+        
+
+
         public AccountController()
         {
             context = new GWAContext();
+            service = new ServiceUser();
         }
-
+        
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
         {
             UserManager = userManager;
@@ -738,23 +749,29 @@ namespace IdentitySample.Controllers
         }
 
         // GET: Account/Details/5
-        public ActionResult Details(string idUser)
+        public ActionResult Profil(string idUser)
         {
-            User u = new User();
-           // p = ps.GetById(id);
 
+            
+            User user = new User();
+           
+           
+            var UserManager = new UserManager<User>(new UserStore<User>(context));
+            user = UserManager.FindById(idUser);
+            // p = ps.GetById(id);
+            //u.is
             RegisterViewModel  uvm = new RegisterViewModel 
             {
                 //UserName = u.UserName,
-                Email = u.Email,
-                FirstName = u.FirstName,
-                LastName = u.LastName,
-                Country = u.Country,
-                BirthDate = u.BirthDate,
-                JoinDate = u.JoinDate
+                Email = user.Email,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Country = user.Country,
+                BirthDate = user.BirthDate,
+                JoinDate = user.JoinDate
                     ,
-                EmailLinkDate = u.EmailLinkDate,
-                LAstLoginDate = u.LAstLoginDate,
+                EmailLinkDate = user.EmailLinkDate,
+                LAstLoginDate = user.LAstLoginDate,
                
 
             };
